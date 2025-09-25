@@ -1,0 +1,16 @@
+services:
+- type: web
+  name: ghost-chat
+  env: python
+  plan: free
+  buildCommand: pip install -r requirements.txt
+  startCommand: gunicorn --worker-class eventlet -w 1 -b 0.0.0.0:$PORT run:app
+  envVars:
+    - key: FLASK_ENV
+      value: production
+    - key: SECRET_KEY
+      generateValue: true
+    - key: DATABASE_URL
+      value: sqlite:///ghost_chat.db
+    - key: IPINFO_TOKEN
+      sync: false

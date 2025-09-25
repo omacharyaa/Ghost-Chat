@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block content %}
+<h3 class="mb-3">Select your region</h3>
+<form method="post">
+	<div class="row g-3 align-items-end">
+		<div class="col-12 col-md-4">
+			<label class="form-label">Country</label>
+			<select id="country" name="country" class="form-select" onchange="toggleCity()">
+				<option value="Global">Global</option>
+				{% for c in countries %}
+				<option value="{{ c }}">{{ c }}</option>
+				{% endfor %}
+			</select>
+		</div>
+		<div class="col-12 col-md-4" id="cityCol" style="display:none">
+			<label class="form-label">City (India)</label>
+			<select id="city" name="city" class="form-select">
+				<option value="">Select city</option>
+				{% for city in india_cities %}
+				<option value="{{ city }}">{{ city }}</option>
+				{% endfor %}
+			</select>
+		</div>
+		<div class="col-12 col-md-4">
+			<label class="form-label">Or custom region</label>
+			<input name="custom" class="form-control" placeholder="e.g., Asia / EU / Your City">
+		</div>
+		<div class="col-12">
+			<button class="btn btn-primary" type="submit">Save</button>
+		</div>
+	</div>
+</form>
+<script>
+function toggleCity(){
+	const country = document.getElementById('country').value;
+	document.getElementById('cityCol').style.display = country === 'India' ? '' : 'none';
+}
+</script>
+{% endblock %}

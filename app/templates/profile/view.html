@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="row justify-content-center">
+	<div class="col-12 col-md-8 col-lg-6">
+		<div class="card shadow-sm">
+			<div class="card-body p-4">
+				<h3 class="mb-3">Profile</h3>
+				{% if profile %}
+					<ul class="list-group list-group-flush">
+						<li class="list-group-item"><strong>Name:</strong> {{ profile.name or '—' }}</li>
+						<li class="list-group-item"><strong>Gender:</strong> {{ profile.gender or '—' }}</li>
+						<li class="list-group-item"><strong>Age:</strong> {{ profile.age or '—' }}</li>
+						<li class="list-group-item"><strong>Height:</strong> {{ profile.height_cm or '—' }}{% if profile.height_cm %} cm{% endif %}</li>
+						<li class="list-group-item"><strong>Interests:</strong> {{ profile.interests or '—' }}</li>
+					</ul>
+				{% else %}
+					<div class="text-muted">No profile yet.</div>
+				{% endif %}
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}

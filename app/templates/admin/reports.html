@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block content %}
+<h3>Reported Messages</h3>
+<table class="table table-striped">
+	<thead>
+		<tr>
+			<th>ID</th>
+			<th>Message</th>
+			<th>Reason</th>
+			<th>When</th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		{% for r in reports %}
+		<tr>
+			<td>{{ r.id }}</td>
+			<td>{{ r.message.content }}</td>
+			<td>{{ r.reason }}</td>
+			<td>{{ r.created_at }}</td>
+			<td><a class="btn btn-sm btn-danger" href="{{ url_for('admin.delete_message', message_id=r.message_id) }}">Delete message</a></td>
+		</tr>
+		{% else %}
+		<tr><td colspan="5" class="text-center text-muted">No reports</td></tr>
+		{% endfor %}
+	</tbody>
+</table>
+{% endblock %}

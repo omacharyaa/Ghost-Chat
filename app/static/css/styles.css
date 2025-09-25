@@ -1,0 +1,42 @@
+:root { }
+
+.bg-gradient {
+	background: radial-gradient(1200px 600px at 10% -10%, rgba(99,102,241,.15), transparent 40%),
+		radial-gradient(1200px 600px at 110% 10%, rgba(16,185,129,.14), transparent 40%);
+	min-height: 100vh;
+}
+
+.navbar-blur {
+	backdrop-filter: saturate(140%) blur(8px);
+	background-color: rgba(255,255,255,.6);
+	border-bottom: 1px solid rgba(0,0,0,.05);
+}
+
+[data-bs-theme="dark"] .navbar-blur {
+	background-color: rgba(20,20,24,.6);
+	border-bottom-color: rgba(255,255,255,.08);
+}
+
+.hero-card {
+	background: linear-gradient(135deg, rgba(59,130,246,.08), rgba(16,185,129,.08));
+	border: 1px solid rgba(0,0,0,.06);
+}
+
+.card { border: 1px solid rgba(0,0,0,.06); }
+[data-bs-theme="dark"] .card { border-color: rgba(255,255,255,.08); }
+
+#messages > div { margin-bottom: 0.4rem; }
+
+/* Animations */
+.fade-in { animation: fadeIn .18s ease-out both; }
+.slide-in-left { animation: slideInLeft .22s ease-out both; }
+.slide-out-left { animation: slideOutLeft .18s ease-in both; }
+.grow-width { transition: width .22s ease, max-width .22s ease, flex .22s ease; }
+.opacity-transition { transition: opacity .18s ease; }
+
+@keyframes fadeIn { from { opacity: 0; transform: translateY(2px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes slideInLeft { from { opacity: 0; transform: translateX(-8px); } to { opacity: 1; transform: translateX(0); } }
+@keyframes slideOutLeft { from { opacity: 1; transform: translateX(0); } to { opacity: 0; transform: translateX(-8px); } }
+
+/* Sidebar visibility helper */
+#sidebarCol.hidden-sidebar { pointer-events: none; }
